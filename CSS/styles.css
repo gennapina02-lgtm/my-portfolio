@@ -1,34 +1,44 @@
 
-/* =====================================
+/* ========================================
    GENESIS PINA - PERSONAL PORTFOLIO
    Main Stylesheet
-===================================== */
+======================================== */
 
-/* Color Variables */
+
+/* 1. CSS VARIABLES */
+
 :root {
-    --background: #000000;
+    --background: #F8FAFC;
     --surface: #FFFFFF;
-    --text: #0000FF;
-    --secondary-text: #0000A0;
+    --text: #0F172A;
+    --text-muted: #64748B;
     --accent: #07075D;
+    --accent-hover: #15158A;
     --border: #E2E8F0;
 
-    --shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    --shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+
+    --transition: 0.3s ease;
 }
 
+
 /* Dark Theme */
+
 body.dark-theme {
     --background: #0F172A;
     --surface: #1E293B;
     --text: #F8FAFC;
-    --secondary-text: #CBD5E1;
+    --text-muted: #CBD5E1;
     --accent: #A5B4FC;
+    --accent-hover: #C7D2FE;
     --border: #334155;
 
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Global Reset */
+
+/* 2. GLOBAL STYLES */
+
 * {
     margin: 0;
     padding: 0;
@@ -41,24 +51,46 @@ html {
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
     background-color: var(--background);
     color: var(--text);
 
     line-height: 1.7;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+        background-color var(--transition),
+        color var(--transition);
 }
 
-/* General Links */
 a {
     color: inherit;
     text-decoration: none;
 }
 
-/* Header */
+button {
+    font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+
+/* 3. HEADER AND NAVIGATION */
+
 .site-header {
+    width: 100%;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -68,40 +100,48 @@ a {
 }
 
 .navbar {
-    max-width: 1100px;
-    margin: auto;
-    padding: 18px 24px;
+    max-width: 1150px;
+    min-height: 75px;
+    margin: 0 auto;
+    padding: 15px 25px;
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    align-items: center;
+    gap: 20px;
 }
 
 .logo {
-    font-size: 1.2rem;
-    font-weight: 750;
-    letter-spacing: -0.5px;
-    color: var(--accent);
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 30px;
+
+    list-style: none;
 }
 
 .nav-links a {
+    color: var(--text-muted);
     font-size: 0.95rem;
-    color: var(--secondary-text);
-    transition: color 0.2s ease;
+    font-weight: 500;
+
+    transition: color var(--transition);
 }
 
 .nav-links a:hover {
     color: var(--accent);
 }
 
+
 /* Theme Button */
+
 .theme-toggle {
     display: flex;
     align-items: center;
@@ -109,282 +149,396 @@ a {
 
     padding: 9px 14px;
 
-    border: 1px solid var(--border);
-    border-radius: 25px;
-
-    background-color: var(--background);
     color: var(--text);
+    background-color: var(--background);
 
-    font: inherit;
-    font-size: 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
 
     cursor: pointer;
-    transition: background-color 0.2s ease,
-                border-color 0.2s ease;
+    transition: var(--transition);
 }
 
 .theme-toggle:hover {
     border-color: var(--accent);
 }
 
-/* Keyboard Focus */
-a:focus-visible,
-button:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 4px;
+.theme-toggle span:first-child {
+    font-size: 1.1rem;
 }
 
-/* Hero Section */
+
+/* 4. HERO SECTION */
+
 .hero {
-    min-height: 560px;
-    padding: 100px 24px;
+    min-height: 600px;
+    max-width: 1150px;
+
+    margin: 0 auto;
+    padding: 120px 25px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    text-align: center;
 }
 
 .hero-content {
-    max-width: 760px;
+    max-width: 750px;
 }
 
 .eyebrow {
-    margin-bottom: 12px;
-
     color: var(--accent);
 
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 2px;
-    text-transform: uppercase;
+
+    margin-bottom: 15px;
 }
 
 .hero h1 {
-    margin-bottom: 12px;
+    max-width: 700px;
 
     font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
     line-height: 1.15;
-    letter-spacing: -2px;
+
+    margin-bottom: 25px;
 }
 
 .hero h1 span {
     color: var(--accent);
 }
 
-.hero h2 {
-    margin-bottom: 20px;
-
-    color: var(--secondary-text);
-
-    font-size: clamp(1.2rem, 3vw, 1.7rem);
-    font-weight: 500;
-}
-
 .hero-description {
     max-width: 600px;
-    margin: 0 auto 30px;
 
-    color: var(--secondary-text);
-    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-size: 1.15rem;
+
+    margin-bottom: 35px;
 }
 
-/* Buttons */
-.primary-button {
+
+/* Hero Buttons */
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.primary-button,
+.secondary-button {
     display: inline-block;
 
-    padding: 13px 25px;
-
-    background-color: var(--accent);
-    color: #FFFFFF;
+    padding: 13px 23px;
 
     border-radius: 8px;
+    font-weight: 600;
 
-    font-weight: 650;
-
-    transition: transform 0.2s ease,
-                opacity 0.2s ease;
+    transition: var(--transition);
 }
 
-body.dark-theme .primary-button {
-    color: #0F172A;
+.primary-button {
+    color: #FFFFFF;
+    background-color: var(--accent);
 }
 
 .primary-button:hover {
+    background-color: var(--accent-hover);
     transform: translateY(-2px);
-    opacity: 0.9;
 }
 
-/* General Sections */
+.secondary-button {
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.secondary-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+
+/* 5. GENERAL SECTION STYLES */
+
 .section {
-    padding: 85px 24px;
-}
+    max-width: 1150px;
 
-.section-content {
-    max-width: 950px;
     margin: 0 auto;
+    padding: 90px 25px;
 }
 
-.section h2 {
-    margin-bottom: 22px;
-
-    font-size: clamp(2rem, 4vw, 2.7rem);
-    letter-spacing: -1px;
+.section-heading {
+    max-width: 650px;
+    margin-bottom: 40px;
 }
 
-.section p {
-    margin-bottom: 16px;
-    color: var(--secondary-text);
+.section-heading h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+
+    margin-bottom: 15px;
 }
 
-/* Skills Section */
+.section-heading > p:not(.eyebrow) {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+
+/* 6. ABOUT SECTION */
+
+.about-section {
+    border-top: 1px solid var(--border);
+}
+
+.about-content {
+    max-width: 800px;
+}
+
+.about-content p {
+    color: var(--text-muted);
+    font-size: 1.08rem;
+
+    margin-bottom: 20px;
+}
+
+
+/* 7. SKILLS SECTION */
+
 .skills-section {
-    background-color: var(--surface);
+    border-top: 1px solid var(--border);
 }
 
 .skills-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
-
-    margin-top: 35px;
 }
 
 .skill-card {
-    padding: 25px;
+    padding: 30px;
 
-    background-color: var(--background);
+    background-color: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
 
     box-shadow: var(--shadow);
 
-    transition: transform 0.2s ease,
-                border-color 0.2s ease;
+    transition: transform var(--transition),
+                border-color var(--transition);
 }
 
 .skill-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     border-color: var(--accent);
 }
 
 .skill-card h3 {
+    font-size: 1.2rem;
     margin-bottom: 12px;
-    font-size: 1.15rem;
-    color: var(--text);
 }
 
 .skill-card p {
-    margin-bottom: 0;
-    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-size: 0.98rem;
 }
 
-/* Contact Section */
-.contact-section {
-    text-align: center;
-}
 
-.contact-section .section-content {
-    max-width: 650px;
-}
+/* 8. JOURNEY SECTION */
 
-.contact-section .primary-button {
-    margin-top: 15px;
-}
-
-.email-address {
-    margin-top: 18px;
-    font-size: 0.9rem;
-}
-
-/* Footer */
-.site-footer {
-    padding: 25px 20px;
-
-    text-align: center;
-
-    background-color: var(--surface);
+.journey-section {
     border-top: 1px solid var(--border);
 }
 
-.site-footer p {
-    color: var(--secondary-text);
-    font-size: 0.85rem;
-    margin: 0;
+.journey-content {
+    max-width: 800px;
+    padding: 30px;
+
+    background-color: var(--surface);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
 }
 
-/* Tablet and Mobile */
-@media (max-width: 768px) {
+.journey-content p {
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.journey-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* 9. CONTACT SECTION */
+
+.contact-section {
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.contact-section .section-heading {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.email-link {
+    display: inline-block;
+
+    color: var(--accent);
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: 700;
+
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--accent);
+
+    overflow-wrap: anywhere;
+
+    transition: color var(--transition);
+}
+
+.email-link:hover {
+    color: var(--accent-hover);
+}
+
+
+/* 10. FOOTER */
+
+.site-footer {
+    max-width: 1150px;
+
+    margin: 0 auto;
+    padding: 30px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.site-footer a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* 11. TABLET RESPONSIVENESS */
+
+@media (max-width: 850px) {
 
     .navbar {
         flex-wrap: wrap;
-        gap: 15px;
     }
 
     .nav-links {
         order: 3;
         width: 100%;
+
         justify-content: center;
-        gap: 25px;
-    }
+        flex-wrap: wrap;
 
-    .hero {
-        min-height: 480px;
-        padding: 80px 20px;
-    }
-
-    .section {
-        padding: 65px 20px;
+        gap: 20px;
     }
 
     .skills-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
+
+    .hero {
+        min-height: 500px;
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
 }
 
-/* Small Phones */
-@media (max-width: 420px) {
+
+/* 12. MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
 
     .navbar {
-        padding: 15px;
+        padding: 15px 18px;
+        gap: 12px;
     }
 
     .logo {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .theme-toggle {
         padding: 8px 10px;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
 
     .nav-links {
-        gap: 18px;
+        justify-content: space-between;
+        gap: 12px;
     }
 
     .nav-links a {
         font-size: 0.85rem;
     }
 
-    .hero h1 {
-        letter-spacing: -1px;
+    .hero {
+        min-height: 450px;
+        padding: 85px 20px;
+    }
+
+    .hero-description {
+        font-size: 1rem;
     }
 
     .section {
-        padding: 55px 18px;
+        padding: 70px 20px;
     }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        padding: 25px;
+    }
+
+    .journey-content {
+        padding: 22px;
+    }
+
+    .site-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+
 }
 
-/* Reduced Motion Accessibility */
+
+/* 13. REDUCED MOTION ACCESSIBILITY */
+
 @media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
 
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
     }
+
 }
