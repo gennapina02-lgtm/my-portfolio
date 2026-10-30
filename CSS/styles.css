@@ -10,8 +10,8 @@
 :root {
     --background: #008080;
     --surface: #FFFFFF;
-    --text: #0F172A;
-    --text-muted: #64748B;
+    --text: #000000;
+    --text-muted: #000000;
     --accent: #07075D;
     --accent-hover: #15158A;
     --border: #E2E8F0;
